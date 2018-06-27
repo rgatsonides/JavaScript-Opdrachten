@@ -10,29 +10,29 @@ Voor deze opdracht bouwen we dus een applicatie waarin we kunnen aangeven op wel
 
 We beginnen met een opzet voor het project. Ons project bestaat ruwweg uit drie onderdelen. Ons HTML-bestand met het bijbehorende CSS-bestand. Onze JavaScript-module waar onze applicatielogica in komt en een JavaScript-testmodule waar we onze code schrijven om onze logica te testen. Daarnaast maken we gebruik van de Jasmine-bibliotheek voor de testmodule.
 
-1. Fork en clone de [GIT repository](https://git.sogyo.nl/academy-opdrachten/javascript-boef-opdracht) voor deze opdracht.
-2. De volgende stap is het opzetten van onze testbibliotheek. Download de laatste standalone release van de Jasmine website. Kopieer uit de download de map `lib` met inhoud naar je projectmap. Kopieer daarna het bestand `SpecRunner.html` ook naar de projectmap. Open het bestand `SpecRunner.html`.
+* Fork en clone de [GIT repository](https://git.sogyo.nl/academy-opdrachten/javascript-boef-opdracht) voor deze opdracht.
+* De volgende stap is het opzetten van onze testbibliotheek. Download de laatste standalone release van de Jasmine website. Kopieer uit de download de map `lib` met inhoud naar je projectmap. Kopieer daarna het bestand `SpecRunner.html` ook naar de projectmap. Open het bestand `SpecRunner.html`.
 
-  {% codeblock lang:html %}
-  <!-- include source files here... -->
-  <script type="text/JavaScript" src="../../../../jasmine-standalone-2.4.1/src/Player.js"></script>
-  <script type="text/JavaScript" src="../../../../jasmine-standalone-2.4.1/src/Song.js"></script>
+```html
+   <!-- include source files here... -->
+   <script type="text/JavaScript" src="../../../../jasmine-standalone-2.4.1/src/Player.js"></script>
+   <script type="text/JavaScript" src="../../../../jasmine-standalone-2.4.1/src/Song.js"></script>
  
-  <!-- include spec files here... -->
-  <script type="text/JavaScript" src="../../../../jasmine-standalone-2.4.1/spec/SpecHelper.js"></script>
-  <script type="text/JavaScript" src="../../../../jasmine-standalone-2.4.1/spec/PlayerSpec.js"></script>
-  {% endcodeblock %}
+   <!-- include spec files here... -->
+   <script type="text/JavaScript" src="../../../../jasmine-standalone-2.4.1/spec/SpecHelper.js"></script>
+   <script type="text/JavaScript" src="../../../../jasmine-standalone-2.4.1/spec/PlayerSpec.js"></script>
+```
 
-  Vervang bovenstaande fragment door het onderstaande fragment:
+   Vervang bovenstaande fragment door het onderstaande fragment:
 
-  {% codeblock lang:html %}
-  <!-- include spec files here... -->
-  <script type="text/module" src="boef-spec.js"></script>
-  {% endcodeblock %}
+```html
+   <!-- include spec files here... -->
+   <script type="text/module" src="boef-spec.js"></script>
+```
 
-  Als alles is goed gegaan heeft ons project nu de volgende structuur:
+   Als alles is goed gegaan heeft ons project nu de volgende structuur:
 
-  {% codeblock lang:text %}
+```
   boef-project
       + server.js
       + client
@@ -46,7 +46,7 @@ We beginnen met een opzet voor het project. Ons project bestaat ruwweg uit drie 
                 + jasmine.css
                 + jasmine.js
                 + jasmine-html.js
-  {% endcodeblock %}
+```
 
   In JavaScript staat alles dat je aanmaakt in de global scope. Dat is geen probleem als je maar één bestand hebt, zoals je tot nu toe hebt gedaan. Maar als je twee (of meer) bestanden hebt, kunnen er conflicten optreden. Daarop zijn verschillend oplossingen bedacht, zo zijn er een aantal libraries waarmee je je code kunt opslitsen en gescheiden kunt houden.
 
@@ -56,24 +56,25 @@ We beginnen met een opzet voor het project. Ons project bestaat ruwweg uit drie 
 
   Installeer Node.js (zie http://node.org/) en voer het command `node server.js` uit in een command prompt naar keuze. Deze draait nu op http://localhost:8000
 
-3. Neem het volgende stuk code over in `boef.js`:
-  {% codeblock lang:javascript %}
+* Neem het volgende stuk code over in `boef.js`:
+
+```javascript
   // private code komt hier
 
   export default {
     // public code komt hier
   }
-  {% endcodeblock %}
-
+```
   Dit maakt een default export aan. De accolades geven geen block aan, maar een object literal. We hadden ook een functie of een class kunnen exporteren. De conventie is om hetgeen dat gebruikers van je module het vaakst nodig zullen hebben als default te exporteren.
 
-4. In onze testbestand hebben we alleen een verwijzing naar deze Boef module nodig - we hoeven er niets uit te exporteren.
+* In onze testbestand hebben we alleen een verwijzing naar deze Boef module nodig - we hoeven er niets uit te exporteren.
   Neem het volgende stuk code over in `boef-spec.js`:
-  {% codeblock lang:javascript %}
-  import Boef from './boef.js';
 
-  // testen komen hier
-  {% endcodeblock %}
+```javascript
+    import Boef from './boef.js';
+
+    // testen komen hier
+```
 
   Dit zorgt ervoor dat de code die we in `boef.js` kunnen aanroepen.
 
@@ -85,14 +86,15 @@ Zoals we in het vorige sectie al aangaven willen we wachten met het HTML-bestand
 
 Laten we een test schrijven die kijkt of onze `Boef` namespace goed is aangemaakt.
 
-1. Het volgende code fragment is een eenvoudige test die kijkt of de Boef namespace bestaat. Plaats dit fragment in het `boef-spec.js`-bestand.
-  {% codeblock lang:javascript %}
+* Het volgende code fragment is een eenvoudige test die kijkt of de Boef namespace bestaat. Plaats dit fragment in het `boef-spec.js`-bestand.
+
+  ```javascript
   describe("De Boef namespace", function() {
       it("zou moeten bestaan", function() {
           expect(Boef).toBeDefined();
       });
   });
-  {% endcodeblock %}
+  ```
 
   We kunnen de test nu draaien door de pagina `SpecRunner.html` te openen. 
 
@@ -114,20 +116,21 @@ Nu het project is opgezet kunnen we beginnen met de nodige features toe te voege
   
 Laten we beginnen met het invoeren van een emitter. In de project opzet hadden we al een module gemaakt (Boef). Nu willen we een functie toevoegen om een emitter te plaatsen. Het ligt voor de hand om deze functie `plaatsEmitter` te noemen en een latitude en longitude mee te geven als argument. Dus `Boef.plaatsEmitter(latitude, longitude);`. Volgens de testfilosofie zoals we die in het opzet hoofdstuk beschreven maken we eerst een test hiervoor.
   
-1. Voeg de onderstaande test toe aan `boef-spec.js`:
-  {% codeblock lang:javascript %}
+* Voeg de onderstaande test toe aan `boef-spec.js`:
+
+  ```javascript
   describe("Een emitter", function(){
       it("zou toegevoegd moeten zijn", function(){
           Boef.plaatsEmitter(52.102403, 5.175269);
           expect(Boef.emitters().length).toBe(1);
       });
   });
-  {% endcodeblock %}
-  
+  ```
   In deze test voegen we een nieuwe emitter toe en kijken we vervolgens of het aantal emitters 1 is. Het laden van SpecRunner geeft het verwachte resultaat van een falende test. We roepen namelijk twee functies aan op de Boef namespace die helemaal niet bestaan. De volgende taak is dan ook om te zorgen dat deze test niet meer faalt. 
   
-2. Pas `boef.js` aan zodat het identiek is aan het onderstaande codevoorbeeld.
-  {% codeblock lang:javascript %}
+* Pas `boef.js` aan zodat het identiek is aan het onderstaande codevoorbeeld.
+
+  ```javascript
   const emitters = [];
 
   function plaatsEmitter(latitude, longitude) {
@@ -142,14 +145,15 @@ Laten we beginnen met het invoeren van een emitter. In de project opzet hadden w
       plaatsEmitter,
       emitters
   }
-  {% endcodeblock %}
+  ```
   
   Dit zou ervoor moeten zorgen dat de test die we bij de vorige opdracht gemaakt hebben, zou moeten slagen. Let op de stuctuur die we hanteren in deze module: de private variabele `emitters` en de private functies staan op het top level van het document. De default export verwijst hiernaar, zodat ze in ons testbestand beschikbaar zijn.
   
   Ditzelfde kunnen we natuurlijk ook doen voor sensoren. We schrijven een nieuwe test voor de sensoren. Een klein verschil tussen de emitters en de sensoren is dat we meestal maar een enkele emitter gebruiken terwijl we meerdere sensoren gebruiken. Het is dus belangrijk ook te testen dat we meerdere sensoren toevoegen.
    
-3. Voeg de onderstaande test toe aan `boef-spec.js`:
-  {% codeblock lang:javascript %}
+* Voeg de onderstaande test toe aan `boef-spec.js`:
+
+  ```javascript
   describe("De sensoren", function(){
     it("zouden moeten zijn toegevoegd", function(){
       Boef.plaatsSensor(52.102001, 5.173681);
@@ -158,11 +162,11 @@ Laten we beginnen met het invoeren van een emitter. In de project opzet hadden w
       expect(Boef.sensors().length).toBe(3);
     });
   });
-  {% endcodeblock %}
+  ```
 
   De test die net is toegevoegd, faalt natuurlijk. De functies `plaatsSensor` en `sensors` bestaan nog niet. De volgende taak is dan ook om de code te schrijven die onze testen weer doen slagen.
   
-4. Pas `boef.js` aan zodat alle testen in `boef-spec.js` slagen.
+* Pas `boef.js` aan zodat alle testen in `boef-spec.js` slagen.
 
   De oplossing is nu niet meer gegeven, maar moet zelf ontworpen worden. De vervolgopdrachten volgen dit patroon. Er wordt een nieuwe test gegeven en de taak is om deze test over te nemen en te zorgen dat alle testen inclusief de net toegevoegde test slagen.
 
@@ -170,15 +174,16 @@ Laten we beginnen met het invoeren van een emitter. In de project opzet hadden w
 
   Het is verstandig een stap in `boef-spec.js` toe te vogen waarmee we de boel kunnen opschonen tussen twee testen door. Op die manier kunnen onze testen onafhankelijk van elkaar uitgevoerd worden.
 
-  {% codeblock lang:javascript %}
+  ```javascript
   afterEach(function() {
       Boef.verwijderEmitter();
       Boef.verwijderSensoren();
   });
-  {% endcodeblock %}
+  ```
   
-5. Voeg de onderstaande testen toe aan `boef-spec.js` bij de emitter test `('describe("Een emitter"...')` en pas `boef.js` aan zodat alle testen slagen.
-  {% codeblock lang:javascript %}
+* Voeg de onderstaande testen toe aan `boef-spec.js` bij de emitter test `('describe("Een emitter"...')` en pas `boef.js` aan zodat alle testen slagen.
+
+  ```javascript
   it("zou op ongeveer 100 meter afstand van de sensor moeten staan", function(){
     Boef.plaatsEmitter(52.102346, 5.175269);
     Boef.plaatsSensor(52.101448,5.175354);
@@ -194,7 +199,7 @@ Laten we beginnen met het invoeren van een emitter. In de project opzet hadden w
     Boef.plaatsSensor(52.099647,5.175377);
     expect(Boef.sensors()[0].afstand()).toBeCloseTo(300, 0);
   });
-  {% endcodeblock %}
+  ```
   
 ## Reistijden en grondstoffen
 
@@ -204,8 +209,9 @@ Om het wat eenvoudiger te maken voor onze applicatie nemen we een paar zaken aan
 
 Om te detecteren of er grondstof aanwezig is berekenen we het aantal meter grondstof dat op de lijn tussen de emitter en een sensor ligt. Omdat we de totale afstand weten en de totale tijd kunnen we met behulp van de geluidssnelheid van normale aarde en de grondstof een berekening maken.
  
-1. Voeg de onderstaande testen toe aan `boef-spec.js` bij de sensortest en pas `boef.js` aan zodat alle testen slagen.
-  {% codeblock lang:javascript %}
+* Voeg de onderstaande testen toe aan `boef-spec.js` bij de sensortest en pas `boef.js` aan zodat alle testen slagen.
+
+  ```javascript
   it("zou 100 meter normale grond moeten detecteren", function(){
      Boef.plaatsEmitter(52.102346, 5.175269);
      Boef.plaatsSensor(52.101448,5.175354);
@@ -240,14 +246,15 @@ Om te detecteren of er grondstof aanwezig is berekenen we het aantal meter grond
      Boef.sensors()[0].pulse(0.0596636474685185);
      expect(Boef.sensors()[0].aantalMeterGrondstof()).toBeCloseTo(83.00, 0);
   });
-  {% endcodeblock %}
+  ```
   
   Dit geeft de mogelijkheid om te detecteren of er grondstof aanwezig is tussen de sensor en de emitter, maar het geeft niet direct aan waar de grondstof zich precies bevindt. Om dat te kunnen bepalen moeten we de informatie van meerdere sensoren combineren. Als bijvoorbeeld sensoren allemaal op een rij staan met de emitter kan een redelijke schatting gemaakt worden op basis van de verschillende hoeveelheden die elke sensor gaat aangeven.
 
   Om te zorgen dat we een aantal sensoren op een exacte lijn naar de sensor plaatsen maken we een functie die automatisch meerdere sensoren plaatst. Hoe we dit uitvoeren is dat we een enkele sensor plaatsen en van af dat punt meerdere sensoren op deze afstand van elkaar plaatsen.
   
-2. Voeg de onderstaande testen toe aan `boef-spec.js` en pas `boef.js` aan zodat alle testen slagen. 	
-  {% codeblock lang:javascript %}
+* Voeg de onderstaande testen toe aan `boef-spec.js` en pas `boef.js` aan zodat alle testen slagen. 	
+
+  ```javascript
   describe("De rij", function(){
     it("zou moeten bestaan", function(){
         Boef.plaatsEmitter(52.102346, 5.175269);
@@ -279,7 +286,7 @@ Om te detecteren of er grondstof aanwezig is berekenen we het aantal meter grond
       expect(Boef.rijen()[0][9].afstand()).toBeCloseTo(1000, 0);
     });
   });
-  {% endcodeblock %}
+  ```
 
 ## Visualisatie
 
