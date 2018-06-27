@@ -1,4 +1,5 @@
 **Opdracht 1**
+
 Het doel van deze opdracht is om een persoonlijke Hello World te maken.
 
 1. Open index.html zowel in je browser als in je favoriete code editor. Open in de browser de developer tools (vaak te benaderen via F12).
@@ -8,6 +9,6 @@ Het doel van deze opdracht is om een persoonlijke Hello World te maken.
 5. Pas de tekstwaarde van het element "begroeting" aan. Daarvoor kun je het .innerText property gebruiken.
 
 Referenties:
-https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
-https://developer.mozilla.org/en-US/docs/Web/API/Node/innerText
+* https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById
+* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+* https://developer.mozilla.org/en-US/docs/Web/API/Node/innerText
