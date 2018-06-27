@@ -1,0 +1,6 @@
+{
+  "name": "bibliotheek-app",
+  "version": "1.0.0",
+  "description": "Applicatie voor Opdracht 6 van de JavaScript-module.",
+  "main": "app.js"
+}
