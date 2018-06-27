@@ -20,13 +20,13 @@ Stap 3: Gebruikersinteractie in de client
 1. Het bestand client/index.html bevat een zoekveld en een knop. Inmiddels zou bekend moeten zijn hoe je een event listener kunt toevoegen op de zoekknop waarin de inhoud van het zoekveld wordt uitgelezen. Die functionaliteit komt niet in server.js (dat bestand bevat alleen de code die op de server draait), maar in client/index.js.
 2. We willen vanuit onze client code de zoekopdracht doorsturen naar de server. Dat kan met de fetch function. Zie de documentatie in de referenties. Geef de door de gebruikers ingevulde zoekopdracht mee in de URL die je aanroept. In de developer tools kun je de aanroep naar de server zien. De fetch function geeft niet direct een waarde terug, maar een promise: iets dat in de toekomst een waarde zal gaan bevatten. 
 Zie de Using Promises referentie.
-4. Maak voor ieder boek dat uit de zoekopdracht komt een <div> met class "boek" met daarin als children:
- * een <div> met als class "boek"
-    * een <p> voor de titelregel
-        * een <span> met class "titel" in de titelregel met daarin de naam van het boek
-        * een <span> met class "isbn" met daarin het isbn
-    * een <p> met daarin een "aanwezig" met ✔ of ✘ afhankelijk van of er exemplaren beschikbaar zijn
-    * een <button> met tekst "Reserveer exemplaar". Als er geen exemplaren beschikbaar zijn, moet deze knop gedisabled zijn
+4. Maak voor ieder boek dat uit de zoekopdracht komt een `<div>` met class "boek" met daarin als children:
+ * een `<div>` met als class "boek"
+    * een `<p>` voor de titelregel
+        * een `<span>` met class "titel" in de titelregel met daarin de naam van het boek
+        * een `<span>` met class "isbn" met daarin het isbn
+    * een `<p>` met daarin een "aanwezig" met ✔ of ✘ afhankelijk van of er exemplaren beschikbaar zijn
+    * een `<button>` met tekst "Reserveer exemplaar". Als er geen exemplaren beschikbaar zijn, moet deze knop gedisabled zijn
 5. Zorg ervoor dat als iemand op de reserveerknop drukt een call plaatsvindt naar de url "api/reserveerboek/" met daarachter 
 het ID van het boek.
 
