@@ -100,13 +100,13 @@ Laten we een test schrijven die kijkt of onze `Boef` namespace goed is aangemaak
 
   Testen kunnen natuurlijk slagen of falen. Als de opdracht goed gevolgd is zal deze test slagen. We hebben immers de Boef namespace aangemaakt en de 'boef.js' en 'boef-spec.js' bestanden toegevoegd aan de `SpecRunner.html`-pagina. Een succesvolle test zou er uit moeten zien zoals het hieronder gesitueerde plaatje.
   
-  {% asset_img jasmine-ok.jpg De test slaagt %}
+  ![De test slaagt](jasmine-ok.jpg)
   
   De groene kleur van de balk en de 'should exist' tekst geeft aan dat de test geslaagd is. Let op hoe de feedback gestructureerd is. Eerst het 'De Boef namespace'-gedeelte en daar onder het 'zou moeten bestaan'-gedeelte. Het is een goed gebruik in Jasmine dat het 'describe'-gedeelte samen met het 'it'-gedeelte een goede zin vormt die de test beschrijft.
    
   Dit is duidelijk te zien bij een falende test. Het plaatje hieronder laat dezelfde test zien, maar bij deze test was het `boef.js`-bestand niet geladen, dus de namespace bestond niet. Jasmine vertelt ons dit door de melding "De Boef namespace zou moeten bestaan." te geven. De taak voor de ontwikkelaar, die de test schrijft, is dus te zorgen dat deze omschijving zo duidelijk mogelijk is zo het eenvoudig is om te achterhalen wat er fout is aan onze applicatie.
   
-  {% asset_img jasmine-nok.jpg De test faalt %}
+  ![De test faalt](jasmine-nok.jpg)
 
   Voor de rest van de opdracht gaan we ervan uit dat steeds eerst een test geschreven wordt voor elk feature die we toevoegen aan onze applicatie.
   
