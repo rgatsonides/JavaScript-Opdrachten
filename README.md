@@ -1,14 +1,5 @@
-Repository voor de Javascript-opdrachten.
+**Front-end programming met Javascript**
 
-Om de opdrachten hierin te plaatsen:
-- Fork de repository.
-- Clone de repository lokaal.
-- Kopieer alle bestanden naar je lokale repo.
-- Commit en push naar je fork.
-- Maak een merge request zoals gebruikelijk.
+Dit is de repository met de basisopzet voor de Javascriptopdrachten. De opdrachten zijn enerzijds om bekend te raken met Javascript en anderzijds om in het concept front-end programming te duiken. De opdrachten maken grotendeels gebruik van een kleine webpagina, waar je zelf de interactielogica voor moet schrijven in Javascript.
 
-Als je al lokaal een git-repository aan hebt gemaakt en daarin hebt gewerkt:
-- Fork de repository.
-- git remote add myfork (url)
-- git push myfork (mybranch)
-- Maak een merge request zoals gebruikelijk.
+De module bestaat uit 6 opdrachten. De bibliotheekopdracht is optioneel. De opdrachtomschrijving is te vinden als readme in de folder van de bijbehorende opdracht.
